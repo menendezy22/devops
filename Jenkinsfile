@@ -18,6 +18,12 @@ pipeline {
                 sh 'npm run build'
             }
         }
+
+        stage('Build') {
+            steps {
+                sh 'npm start'
+            }
+        }
         
         
     }
