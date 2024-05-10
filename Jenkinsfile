@@ -2,9 +2,9 @@ pipeline {
     agent any
     
     // Define NodeJS tool outside the agent block
-    // tools {
-    //     nodejs 'nodejs'
-    // }
+    tools {
+        nodejs 'nodejs'
+    }
     
     stages {
 
@@ -14,14 +14,18 @@ pipeline {
 
             }
         }
-        stage('deploy') {
+        stage('Install Dependencies') {
             steps {
-                sh 'docker build -t myapp:v1'
+                sh 'npm install'
             }
         }
         
         
-        
+        stage('Build') {
+            steps {
+                sh 'npm run build'
+            }
+        }
         
         
 
