@@ -28,10 +28,7 @@ pipeline {
         }
         
         stage('Deploy to Nginx') {
-            when {
-                // Deploy only if the build is successful
-                expression { currentBuild.result == 'SUCCESS' }
-            }
+            
             steps {
                 // Execute deployment script
                 sh './deploy_to_nginx.sh'
