@@ -26,11 +26,7 @@ pipeline {
                 sh 'npm run build'
             }
         }
-        stage('pord') {
-            steps {
-                sh 'npm start'
-            }
-        }
+        
 
         
         
