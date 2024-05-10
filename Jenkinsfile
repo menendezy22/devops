@@ -1,11 +1,6 @@
 pipeline {
     agent any
     
-    // Define NodeJS tool outside the agent block
-    tools {
-        nodejs 'nodejs'
-    }
-    
     stages {
 
         stage('devops'){
@@ -24,6 +19,13 @@ pipeline {
                 sh "docker build -t menendezy/myapp:v1 ."
 
                 sh "docker push menendezy/myapp:v1"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'docker stop $(docker ps -a -q)'
+                sh 'docker rm $(docker ps -a -q)'
+                sh 'docker run -p 3000:3000 menendezy/myapp:v1'
             }
         }
 
