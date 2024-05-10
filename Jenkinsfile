@@ -7,11 +7,16 @@ pipeline {
     }
     
     stages {
+
+        stage('devops'){
+            checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'githubtoken', url: 'https://github.com/menendezy22/devops.git']])
+        }
         stage('Install Dependencies') {
             steps {
                 sh 'npm install'
             }
         }
+        
         
         stage('Build') {
             steps {
