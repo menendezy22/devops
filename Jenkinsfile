@@ -14,24 +14,16 @@ pipeline {
 
             }
         }
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
         
-        
-        stage('Build') {
+        stage('Build and Push') {
             steps {
-                sh 'npm run build'
-            }
-        }
-        
-        stage('Deploy to Nginx') {
-            
-            steps {
-                
-                sh 'docker build -t myapp:v1 .'
+                def buildNumber = env.BUILD_NUMBER
+
+                sh 'docker login -u menendezy -p 27042000jems'
+
+                sh "docker build -t menendezy/myapp:${buildNumber} ."
+
+                sh "docker push menendezy/myapp:${buildNumber}"
             }
         }
 
