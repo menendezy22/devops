@@ -27,13 +27,7 @@ pipeline {
             }
         }
         
-        stage('Deploy to Nginx') {
-            
-            steps {
-                
-                sh './deploy_to_nginx.sh'
-            }
-        }
+        
 
         
         
