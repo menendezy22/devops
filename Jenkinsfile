@@ -16,12 +16,24 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh 'docker build -t nodeapp:v1 .'
+                sh 'npm install'
             }
         }
         
         
+        stage('Build') {
+            steps {
+                sh 'npm run build'
+            }
+        }
         
+        stage('Deploy to Nginx') {
+            
+            steps {
+                
+                sh './deploy_to_nginx.sh'
+            }
+        }
 
         
         
