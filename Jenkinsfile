@@ -27,7 +27,7 @@ pipeline {
             }
         }
         
-        stage('Deploy to Nginx') {
+        stage('Deploy to NginxToMaj') {
             
             steps {
                 
