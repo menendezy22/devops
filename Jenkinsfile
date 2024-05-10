@@ -6,12 +6,6 @@ pipeline {
     }
 
     agent any
-    
-    // Define NodeJS tool outside the agent block
-    tools {
-        nodejs 'nodejs'
-    }
-    
     stages {
 
         stage('devops'){
