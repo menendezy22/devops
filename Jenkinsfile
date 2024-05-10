@@ -31,7 +31,7 @@ pipeline {
             
             steps {
                 
-                sh 'docker run hello-world'
+                sh 'docker build -t myapp:v1 .'
             }
         }
 
