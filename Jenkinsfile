@@ -19,7 +19,7 @@ pipeline {
 
                 sh "docker build -t menendezy/myapp:v1 ."
 
-                sh "docker push menendezy/myapp:v1"
+                // sh "docker push menendezy/myapp:v1"
             }
         }
         stage('Deploy') {
