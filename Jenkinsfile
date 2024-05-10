@@ -9,7 +9,10 @@ pipeline {
     stages {
 
         stage('devops'){
+            steps{
             checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'githubtoken', url: 'https://github.com/menendezy22/devops.git']])
+
+            }
         }
         stage('Install Dependencies') {
             steps {
