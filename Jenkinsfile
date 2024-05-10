@@ -27,11 +27,13 @@ pipeline {
             }
         }
         
-        stage('Deploy to Nginx') {
-            
+        stage('Deploy') {
             steps {
-                // Execute deployment script
-                sh './deploy_to_nginx.sh'
+                // Copy build files to Nginx directory
+                sh 'cp -r build/* /usr/share/nginx/html/'
+
+                // Restart Nginx
+                sh 'sudo systemctl restart nginx'
             }
         }
 
