@@ -16,16 +16,10 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                sh 'docker build -t nodeapp:v1 .'
             }
         }
         
-        
-        stage('Build') {
-            steps {
-                sh 'npm run build'
-            }
-        }
         
         
 
