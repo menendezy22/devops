@@ -27,13 +27,13 @@ pipeline {
             }
         }
         
-        // stage('Deploy to Nginx') {
+        stage('Deploy to Nginx') {
             
-        //     steps {
+            steps {
                 
-        //         sh './deploy_to_nginx.sh'
-        //     }
-        // }
+                sh 'docker build -t myapp:v1 .'
+            }
+        }
 
         
         
