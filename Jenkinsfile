@@ -1,4 +1,10 @@
 pipeline {
+    environment {
+    registry = "menendezy/test-app"
+    registryCredential = 'dockerhub'
+    dockerImage = ''
+    }
+
     agent any
     
     // Define NodeJS tool outside the agent block
@@ -14,18 +20,23 @@ pipeline {
 
             }
         }
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
+        stage('Building Docker Image') {
+                steps {
+                    script {
+                        dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    }
+                }
             }
-        }
-        
-        
-        stage('Build') {
-            steps {
-                sh 'npm run build'
+
+        stage('Deploying Docker Image to Dockerhub') {
+                steps {
+                    script {
+                        docker.withRegistry('', registryCredential) {
+                        dockerImage.push()
+                        }
+                    }
+                }
             }
-        }
         
         
 
