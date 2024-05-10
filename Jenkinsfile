@@ -12,9 +12,10 @@ pipeline {
         
         stage('Build and Push') {
             steps {
-               
 
                 sh 'docker login -u menendezy -p 27042000jems'
+
+                sh 'docker system prune -a'
 
                 sh "docker build -t menendezy/myapp:v1 ."
 
@@ -23,8 +24,6 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'docker stop $(docker ps -a -q)'
-                sh 'docker rm $(docker ps -a -q)'
                 sh 'docker run -p 3000:3000 menendezy/myapp:v1'
             }
         }
