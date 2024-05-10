@@ -17,13 +17,13 @@ pipeline {
         
         stage('Build and Push') {
             steps {
-                def buildNumber = env.BUILD_NUMBER
+               
 
                 sh 'docker login -u menendezy -p 27042000jems'
 
-                sh "docker build -t menendezy/myapp:${buildNumber} ."
+                sh "docker build -t menendezy/myapp:v1 ."
 
-                sh "docker push menendezy/myapp:${buildNumber}"
+                sh "docker push menendezy/myapp:v1"
             }
         }
 
