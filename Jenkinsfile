@@ -16,16 +16,16 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh 'docker build -t myapp:v1'
+                sh 'npm install'
             }
         }
         
         
-        // stage('Build') {
-        //     steps {
-        //         sh 'npm run build'
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                sh 'npm run build'
+            }
+        }
         
         // stage('Deploy to Nginx') {
             
