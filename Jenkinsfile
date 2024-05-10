@@ -24,11 +24,7 @@ pipeline {
             }
         }
 
-        stage('prod') {
-            steps {
-                sh 'npm start'
-            }
-        }
+        
         
         
     }
