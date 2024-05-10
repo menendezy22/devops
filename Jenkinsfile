@@ -16,24 +16,24 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                sh 'docker build -t myapp:v1'
             }
         }
         
         
-        stage('Build') {
-            steps {
-                sh 'npm run build'
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         sh 'npm run build'
+        //     }
+        // }
         
-        stage('Deploy to NginxToMaj') {
+        // stage('Deploy to Nginx') {
             
-            steps {
+        //     steps {
                 
-                sh './deploy_to_nginx.sh'
-            }
-        }
+        //         sh './deploy_to_nginx.sh'
+        //     }
+        // }
 
         
         
